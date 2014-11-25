@@ -108,4 +108,8 @@ public class Event
 		}
 		return false;
 	}
+	
+	public Money boxOfficeTakings(){
+		return ticketPrice.multipliedBy(ticketsSold, java.math.RoundingMode.HALF_DOWN);
+	}
 }
