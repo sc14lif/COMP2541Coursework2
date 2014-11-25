@@ -12,6 +12,12 @@ public class Venue
 	private int capacity;
 	
 	public Venue (String n, String a, String num, String url, int c) throws MalformedURLException, IllegalArgumentException{
+		if (n.isEmpty() || a.isEmpty() || num.isEmpty() || url.isEmpty()){
+			throw new IllegalArgumentException("All fields must have a value, Strings cannot be empty. ");
+		}
+		else if (c <= 0){
+			throw new IllegalArgumentException("Capacity value cannot be less than or equal to 0. ");
+		}
 		this.name = n;
 		this.address = a;
 		this.phoneNumber = num;
