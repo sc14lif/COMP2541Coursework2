@@ -13,7 +13,7 @@ public class Event
 	private int ticketsSold;
 	private Venue venue;
 	
-	public Event(List<String> a, String date, String doors, String price, int sold, Venue v){
+	public Event(List<String> a, String date, String doors, String price, int sold, Venue v) throws IllegalArgumentException {
 		this.artists = a; //assumes Event has been passed a list of artists, containing 1..* artists
 		this.date = LocalDate.parse(date);
 		this.doors = LocalTime.parse(doors);
