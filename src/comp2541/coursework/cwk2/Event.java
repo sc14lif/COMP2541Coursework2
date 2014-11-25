@@ -14,6 +14,12 @@ public class Event
 	private Venue venue;
 	
 	public Event(List<String> a, String date, String doors, String price, int sold, Venue v) throws IllegalArgumentException {
+		if (a.isEmpty()|| date.isEmpty() || doors.isEmpty() || price.isEmpty()){
+			throw new IllegalArgumentException("All fields must have a value, Strings and Lists cannot be empty.");
+		}
+		else if (sold < 0){
+			throw new IllegalArgumentException("ticketsSold value cannot be less than zero.");
+		}
 		this.artists = a; //assumes Event has been passed a list of artists, containing 1..* artists
 		this.date = LocalDate.parse(date);
 		this.doors = LocalTime.parse(doors);
