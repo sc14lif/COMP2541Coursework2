@@ -4,6 +4,11 @@ import org.joda.money.Money;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
+/**
+ * Event is a class that holds information and contains methods on one particular event (gig).
+ * @author Lucy
+ *
+ */
 public class Event
 {
 	private List<String> artists; 
