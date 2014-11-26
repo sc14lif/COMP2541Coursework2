@@ -173,6 +173,7 @@ public class Event
 			}
 			else{
 				this.ticketsSold += numTickets;
+				return true;
 			}
 		}
 		return false;

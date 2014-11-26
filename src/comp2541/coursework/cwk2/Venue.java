@@ -1,7 +1,7 @@
 package comp2541.coursework.cwk2;
 
 import java.net.MalformedURLException;
-import java.net.URL;
+
 
 /**
  * The Venue class holds information for one venue where an event can be held. 
@@ -13,7 +13,7 @@ public class Venue
 	private String name;
 	private String address;
 	private String phoneNumber;
-	private URL website;
+	private String website;
 	private int capacity;
 	
 	/**
@@ -27,7 +27,7 @@ public class Venue
 	 * @throws MalformedURLException if the constructor fails to form a URL from the given String in the url parameter, it will throw a MalformedURLException.
 	 * @throws IllegalArgumentException Throws exception if it has been passed an incorrect argument.
 	 */
-	public Venue (String n, String a, String num, String url, int c) throws MalformedURLException, IllegalArgumentException{
+	public Venue (String n, String a, String num, String url, int c) throws IllegalArgumentException{
 		if (n.isEmpty() || a.isEmpty() || num.isEmpty() || url.isEmpty()){
 			throw new IllegalArgumentException("All fields must have a value, Strings cannot be empty. ");
 		}
@@ -37,7 +37,7 @@ public class Venue
 		this.name = n;
 		this.address = a;
 		this.phoneNumber = num;
-		this.website = new URL(url);
+		this.website = url;
 		this.capacity = c;
 	}
 	
@@ -69,7 +69,7 @@ public class Venue
 	 * Gets the URL of the venue.
 	 * @return URL object containing the website of the venue.
 	 */
-	public URL getWebsite() {
+	public String getWebsite() {
 		return website;
 	}
 	
