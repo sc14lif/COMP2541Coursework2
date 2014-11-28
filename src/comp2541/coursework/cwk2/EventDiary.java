@@ -8,6 +8,11 @@ import java.util.TreeSet;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+/**
+ * EventDiary is a class that holds a sortedSet of event objects, and has methods to display information about these events to the user.
+ * @author sc14lif
+ *
+ */
 public class EventDiary {
 	
 	SortedSet<Event> events;
@@ -16,11 +21,26 @@ public class EventDiary {
 		events = new TreeSet<Event>();
 	}
 	
+	/**
+	 * adds an event to the set of events
+	 * @param artists a list of strings containing the names of the artists performing
+	 * @param date the date of the event
+	 * @param doors the time the doors open
+	 * @param price the price of one ticket for the event
+	 * @param sold the number of tickets that have already been sold
+	 * @param venue a Venue object, containing information about the venue the event is being held at
+	 * @return returns true if the event was sucessfully created and added to the events set. returns false if it failed to add it to the set.
+	 */
 	public boolean addEvent(List<String> artists, String date, String doors, String price, int sold, Venue venue){
 		Event e = new Event(artists, date, doors, price, sold, venue);
 		return events.add(e);
 	}
 	
+	/**
+	 * cancels an event by removing the event object from the set
+	 * @param the Event object to remove
+	 * @return returns true if the event was in the set and has been successfully removed, returns false if it failed to find and remove the event
+	 */
 	public boolean cancelEvent(Event e){
 		if (events.contains(e)){
 			return events.remove(e);
@@ -28,6 +48,9 @@ public class EventDiary {
 		return false;
 	}
 	
+	/**
+	 * displays formatted information to the console about all events stored in the set
+	 */
 	public void displayAll(){
 		System.out.println("---------Displaying All Events---------");
 		for (Event e : events){
@@ -48,6 +71,9 @@ public class EventDiary {
 		}
 	}
 	
+	/**
+	 * displays formatted information to the console about all events in the set that are upcoming
+	 */
 	public void displayUpcoming(){
 		System.out.println("-------------Upcoming Events----------------");
 		for (Event e : events){
@@ -70,6 +96,10 @@ public class EventDiary {
 		}
 	}
 	
+	/**
+	 * method that tests the displayAll() and displayUpcoming() methods 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		EventDiary diary = new EventDiary();
 		ArrayList<String> artists1  = new ArrayList<String>();

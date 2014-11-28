@@ -1,6 +1,5 @@
 package comp2541.coursework.cwk2;
 
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
