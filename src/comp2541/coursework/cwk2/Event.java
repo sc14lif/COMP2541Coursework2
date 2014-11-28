@@ -1,5 +1,6 @@
 package comp2541.coursework.cwk2;
 import java.util.List;
+
 import org.joda.money.Money;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
@@ -9,7 +10,7 @@ import org.joda.time.LocalTime;
  * @author Lucy
  *
  */
-public class Event
+public class Event implements Comparable<Event>
 {
 	private List<String> artists; 
 	private LocalDate date;
@@ -185,5 +186,40 @@ public class Event
 	 */
 	public Money boxOfficeTakings(){
 		return ticketPrice.multipliedBy(ticketsSold, java.math.RoundingMode.HALF_DOWN);
+	}
+	
+	/**
+	 * compares two Event objects first by date, and then by first listed artist.
+	 */
+	@Override public int compareTo(Event other){
+		int before = -1;
+		int equal = 0;
+		int after = 1;
+		
+		//check if they are the same object
+		if (this == other){return equal;}
+		
+		if (this.date.isBefore(other.date)){ //using methods from the joda library
+			return before;
+		}
+		else if (this.date.isAfter(other.date)){
+			return after;
+		}
+		else if (this.date.isEqual(other.date)){ //if equal, compare by first listed artist name
+			int compare = this.artists.get(0).compareTo(other.artists.get(0)); //returns comparison value depending on lexicographical order 
+			if (compare < 0){
+				return before;
+				}
+			else if (compare == 0){
+				return equal;
+			}
+			else if (compare > 0){
+				return after;
+			}
+		}
+		else{
+			throw new NullPointerException();
+		}
+		return 0;
 	}
 }

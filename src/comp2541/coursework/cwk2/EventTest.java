@@ -99,4 +99,65 @@ public class EventTest
 		Venue northPole = new Venue("The North Pole", "Artic Circle", "5559876", "www.northpole.com", 500);
 		Event xmasConcert = new Event(artists, "2014-12-13", "20:00", "GBP 50.00", -15, northPole);
 	}
+	
+	/**
+	 * Test to check that the compareTo method works. 
+	 */
+	@Test public void compareToTest1(){
+		List<String> artists = new ArrayList<String>();
+		artists.add("Taylor Swift");
+		artists.add("Rihanna");
+		artists.add("Katy Perry");
+		
+		Venue wembley = new Venue("Wembley Stadium", "Wembley Park, London", "5559876", "www.wembleystadium.com", 90000);
+		Event popConcert = new Event(artists, "2014-12-13", "20:00", "GBP 50.00", 10000, wembley);
+		
+		List<String> artists2 = new ArrayList<String>();
+		artists2.add("Coldplay");
+		artists2.add("The Killers");
+		artists2.add("Artic Monkeys");
+
+		Venue O2Arena = new Venue("O2 Arena", "London", "5551234", "www.theO2.co.uk", 20000);
+		Event IndieRockConcert = new Event(artists2, "2014-11-26", "19:30", "GBP 17.50", 0, O2Arena);
+
+		assertEquals(popConcert.compareTo(IndieRockConcert), 1);
+	}
+	
+	/**
+	 * Test to check the compareTo method correctly throws a NullPointerException.
+	 */
+	@Test (expected=NullPointerException.class) public void compareToTest2(){
+		List<String> artists = new ArrayList<String>();
+		artists.add("Taylor Swift");
+		artists.add("Rihanna");
+		artists.add("Katy Perry");
+		
+		Venue wembley = new Venue("Wembley Stadium", "Wembley Park, London", "5559876", "www.wembleystadium.com", 90000);
+		Event popConcert = new Event(artists, "2014-12-13", "20:00", "GBP 50.00", 10000, wembley);
+
+		popConcert.compareTo(null);
+	}
+	
+	/**
+	 * Test to check that the compareTo method correctly compares events that are on the same day 
+	 */
+	@Test public void compareToTest3(){
+		List<String> artists = new ArrayList<String>();
+		artists.add("Taylor Swift");
+		artists.add("Rihanna");
+		artists.add("Katy Perry");
+		
+		Venue wembley = new Venue("Wembley Stadium", "Wembley Park, London", "5559876", "www.wembleystadium.com", 90000);
+		Event popConcert = new Event(artists, "2014-12-13", "20:00", "GBP 50.00", 10000, wembley);
+		
+		List<String> artists2 = new ArrayList<String>();
+		artists2.add("The Killers");
+		artists2.add("Coldplay");
+		artists2.add("Artic Monkeys");
+
+		Venue O2Arena = new Venue("O2 Arena", "London", "5551234", "www.theO2.co.uk", 20000);
+		Event IndieRockConcert = new Event(artists2, "2014-12-13", "19:30", "GBP 17.50", 0, O2Arena);
+
+		assertEquals(popConcert.compareTo(IndieRockConcert), -1);
+	}
 }
